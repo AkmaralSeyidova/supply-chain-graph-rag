@@ -1,0 +1,61 @@
+"If Acme Steel stops production, which companies are affected downstream?"
+Loading weights: 100%|██████████████████████████████████████████████████████| 103/103 [00:00<00:00, 2041.74it/s]
+
+QUESTION: If Acme Steel stops production, which companies are affected downstream?
+
+[1] Best chunk (0.63): Acme Steel is a steel producer based in Pittsburgh. It supplies steel plates to BuildCo and to Nordic Metals.
+[2] Starting entities: ['Acme Steel', 'BuildCo', 'Nordic Metals']
+[3] Graph facts (direction=down):
+    (hop 1) Acme Steel supplies steel plates to BuildCo
+    (hop 1) Acme Steel supplies steel plates, raw steel to Nordic Metals
+    (hop 2) Nordic Metals supplies aluminum sheets to Falcon Aerospace
+    (hop 2) BuildCo supplies chassis frames to Zenith Motors
+
+ANSWER:
+ Based on the provided graph facts and source text, the companies affected downstream if Acme Steel stops production are:
+
+### **Direct Downstream Companies (Hop 1)**
+These companies receive materials directly from Acme Steel:
+* **BuildCo:** Acme Steel directly supplies steel plates to BuildCo.
+* **Nordic Metals:** Acme Steel directly supplies steel plates and raw steel to Nordic Metals.
+
+---
+
+### **Indirect Downstream Companies (Hop 2)**
+These companies depend on suppliers that source directly from Acme Steel:
+* **Zenith Motors:** BuildCo supplies chassis frames to Zenith Motors.  
+  * *Chain:* Acme Steel $\rightarrow$ BuildCo $\rightarrow$ Zenith Motors
+* **Falcon Aerospace:** Nordic Metals supplies aluminum sheets to Falcon Aerospace.  
+  * *Chain:* Acme Steel $\rightarrow$ Nordic Metals $\rightarrow$ Falcon Aerospace
+
+No further downstream hops (hop 3 or beyond) are mentioned in the provided text.
+(venv) PS C:\Users\DELL\graphrag> python graph_rag.py
+Loading weights: 100%|██████████████████████████████████████████████████████| 103/103 [00:00<00:00, 1872.40it/s]
+
+QUESTION: Which companies are upstream suppliers of the company that had a brake safety incident?
+
+[1] Best chunk (0.42): Zenith Motors is an automaker based in Michigan. In March 2024, Zenith Motors recalled 40,000 vehicles after a brake failure incident that injured two drivers.
+[2] Starting entities: ['Zenith Motors']
+[3] Graph facts (direction=up):
+    (hop 1) BuildCo supplies chassis frames to Zenith Motors
+    (hop 1) Orion Chemicals supplies paint coatings to Zenith Motors
+    (hop 1) Pacific Rubber supplies tires to Zenith Motors
+    (hop 2) Acme Steel supplies steel plates to BuildCo
+  Server busy, retrying in 10s...
+
+ANSWER:
+ Based on the provided text and graph facts, the company that had a brake safety incident is **Zenith Motors** (which recalled 40,000 vehicles following a brake failure incident). 
+
+The upstream suppliers of Zenith Motors, categorized by supply chain hops, are:
+
+### **Direct Suppliers (Hop 1)**
+These companies supply products directly to Zenith Motors:
+* **BuildCo:** Supplies chassis frames directly to Zenith Motors.
+* **Orion Chemicals:** Supplies paint coatings directly to Zenith Motors.
+* **Pacific Rubber:** Supplies tires directly to Zenith Motors.
+
+---
+
+### **Indirect Suppliers (Hop 2)**
+These companies supply inputs to Zenith Motors' direct suppliers:
+* **Acme Steel:** Supplies steel plates to BuildCo, which in turn supplies chassis frames to Zenith Motors. 

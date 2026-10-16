@@ -1,0 +1,12 @@
+BASELINE: plain vector RAG (Day 2)
+
+Question: Which companies are upstream suppliers of the company that had a brake safety incident?
+
+[0.42] Zenith Motors is an automaker based in Michigan. In March 2024, Zenith Motors recalled 40,000 vehicles after a brake failure incident that injured two drivers.
+
+[0.33] Pacific Rubber supplies tires to Zenith Motors. Its factory in Vietnam was closed in 2024 after a flood.
+
+[0.33] BuildCo manufactures chassis frames and is headquartered in Texas. BuildCo supplies chassis frames to Zenith Motors.
+
+RESULT: Acme Steel (second-tier supplier, via BuildCo) is MISSING.
+Orion Chemicals (direct supplier) is also missing.
